@@ -1,0 +1,8 @@
+node_modules
+dist
+.fusebox
+.vscode
+mods
+coverage
+.rpt2_cache
+docs
