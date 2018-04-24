@@ -106,10 +106,27 @@ export type EthNullable<
   ? Value
   : ExcludeValue extends true ? null : Value | null;
 
+export interface IJsonSuccess<Response> {
+  id: number;
+  jsonrpc: '2.0';
+  result: Response;
+}
+
+export interface IJsonError {
+  id: number;
+  jsonrpc: '2.0';
+  error: {
+    code: number;
+    message: string;
+    data?: any;
+  };
+}
+
 export interface IJsonRPC<
   Method extends RpcMethodNames,
   Response = string,
-  Params extends any[] | never[] = never[]
+  Params extends any[] | never[] = never[],
+  Success extends boolean = boolean
 > {
   request: {
     method: Method;
@@ -117,14 +134,17 @@ export interface IJsonRPC<
     id: number;
     jsonrpc: '2.0';
   };
-  response: {
-    id: number;
-    jsonrpc: '2.0';
-    result: Response;
-  };
+  response: Success extends true
+    ? IJsonSuccess<Response>
+    : Success extends false ? IJsonError : IJsonSuccess<Response> | IJsonError;
 }
 
-export type AnyJsonRpc = IJsonRPC<any, any, any>;
+export type AnyJsonRpc<Success extends boolean = true> = IJsonRPC<
+  any,
+  any,
+  any,
+  Success
+>;
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
@@ -134,12 +154,8 @@ export type ExcludeRpcVer<
 
 export type ExtractReq<T extends AnyJsonRpc> = T['request'];
 
-export type ExtractResponse<T extends AnyJsonRpc> = T['response'];
+export type ExtractResponse<T extends AnyJsonRpc<boolean>> = T['response'];
 
-export type ExtractParams<T extends IJsonRPC<any, any, any>> = ExtractReq<
-  T
->['params'];
+export type ExtractParams<T extends AnyJsonRpc> = ExtractReq<T>['params'];
 
-export type ExtractResult<T extends IJsonRPC<any, any, any>> = ExtractResponse<
-  T
->['result'];
+export type ExtractResult<T extends AnyJsonRpc> = ExtractResponse<T>['result'];
