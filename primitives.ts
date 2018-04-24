@@ -69,14 +69,6 @@ export enum ENUM_DEFAULT_BLOCK {
   PENDING = 'pending',
 }
 
-export type GetRpcParameters<
-  T extends IJsonRPC<any, any, any>
-> = T['request']['params'];
-
-export type GetRpcResult<
-  T extends IJsonRPC<any, any, any>
-> = T['response']['result'];
-
 export type DefaultBlock = QUANTITY | ENUM_DEFAULT_BLOCK;
 
 /**
@@ -117,7 +109,7 @@ export type EthNullable<
 export interface IJsonRPC<
   Method extends RpcMethodNames,
   Response = string,
-  Params extends any[] | null = null
+  Params extends any[] | never[] = never[]
 > {
   request: {
     method: Method;
@@ -131,3 +123,23 @@ export interface IJsonRPC<
     result: Response;
   };
 }
+
+export type AnyJsonRpc = IJsonRPC<any, any, any>;
+
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+export type ExcludeRpcVer<
+  T extends AnyJsonRpc['request'] | AnyJsonRpc['response']
+> = Omit<T, 'jsonrpc' | 'id'>;
+
+export type ExtractReq<T extends AnyJsonRpc> = T['request'];
+
+export type ExtractResponse<T extends AnyJsonRpc> = T['response'];
+
+export type ExtractParams<T extends IJsonRPC<any, any, any>> = ExtractReq<
+  T
+>['params'];
+
+export type ExtractResult<T extends IJsonRPC<any, any, any>> = ExtractResponse<
+  T
+>['result'];

@@ -9,8 +9,6 @@ import {
   RpcMethodNames,
 } from './primitives';
 
-export type NetVersion = IJsonRPC<RpcMethodNames.NET_VERSION, string>;
-
 export type NetListening = IJsonRPC<RpcMethodNames.NET_LISTENING, boolean>;
 
 export type NetPeerCount = IJsonRPC<RpcMethodNames.NET_PEER_COUNT, QUANTITY>;
