@@ -73,6 +73,10 @@ export type GetRpcParameters<
   T extends IJsonRPC<any, any, any>
 > = T['request']['params'];
 
+export type GetRpcResult<
+  T extends IJsonRPC<any, any, any>
+> = T['response']['result'];
+
 export type DefaultBlock = QUANTITY | ENUM_DEFAULT_BLOCK;
 
 /**
