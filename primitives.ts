@@ -69,6 +69,10 @@ export enum ENUM_DEFAULT_BLOCK {
   PENDING = 'pending',
 }
 
+export type GetRpcParameters<
+  T extends IJsonRPC<any, any, any>
+> = T['request']['params'];
+
 export type DefaultBlock = QUANTITY | ENUM_DEFAULT_BLOCK;
 
 /**
