@@ -1,10 +1,10 @@
 import {
-  IJsonRPC,
-  RpcMethodNames,
-  QUANTITY,
   DATA_20B,
-  DefaultBlock,
   DATA_32B,
+  DefaultBlock,
+  IJsonRPC,
+  QUANTITY,
+  RpcMethodNames,
 } from './primitives';
 
 export type EthGetTransactionCount = IJsonRPC<

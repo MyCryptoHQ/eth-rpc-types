@@ -1,4 +1,4 @@
-import { IJsonRPC, RpcMethodNames, DATA } from './primitives';
+import { DATA, IJsonRPC, RpcMethodNames } from './primitives';
 
 export type Web3ClientVersion = IJsonRPC<RpcMethodNames.WEB_3_CLIENT_VERSION>;
 

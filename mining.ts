@@ -1,4 +1,4 @@
-import { RpcMethodNames, DATA_32B, IJsonRPC } from './primitives';
+import { DATA_32B, IJsonRPC, RpcMethodNames } from './primitives';
 
 export type EthGetWork = IJsonRPC<
   RpcMethodNames.ETH_GET_WORK,

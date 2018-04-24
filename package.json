@@ -6,12 +6,10 @@
   "typings": "./",
   "scripts": {
     "tsc": "tsc --noEmit -p ./tsconfig.json",
-    "format":
-      "find ./ -name '*.ts*' | xargs prettier --write --config ./.prettierrc --config-precedence file-override",
+    "format": "find ./ -name '*.ts*' | xargs prettier --write --config ./.prettierrc --config-precedence file-override",
     "lint": "tslint --project .",
     "lint:fix": "tslint --project . --fix",
-    "prepublishOnly":
-      "rimraf node_modules && npm i && npm run tsc && npm run lint",
+    "prepublishOnly": "rimraf node_modules && npm i && npm run tsc && npm run lint",
     "precommit": "lint-staged",
     "prepush": "npm run lint && npm run tsc"
   },
