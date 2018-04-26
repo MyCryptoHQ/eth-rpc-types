@@ -152,10 +152,20 @@ export type ExcludeRpcVer<
   T extends AnyJsonRpc['request'] | AnyJsonRpc['response']
 > = Omit<T, 'jsonrpc' | 'id'>;
 
-export type ExtractReq<T extends AnyJsonRpc> = T['request'];
+export type ExtractReq<T extends AnyJsonRpc<boolean>> = T['request'];
+
+export type ExtractParams<T extends AnyJsonRpc<boolean>> = ExtractReq<
+  T
+>['params'];
 
 export type ExtractResponse<T extends AnyJsonRpc<boolean>> = T['response'];
 
-export type ExtractParams<T extends AnyJsonRpc> = ExtractReq<T>['params'];
+export type ExtractSuccessResponse<
+  T extends AnyJsonRpc<boolean>
+> = T['response'] extends (IJsonSuccess<infer U> | IJsonError)
+  ? IJsonSuccess<U>
+  : IJsonSuccess<never>;
 
-export type ExtractResult<T extends AnyJsonRpc> = ExtractResponse<T>['result'];
+export type ExtractResult<
+  T extends AnyJsonRpc<boolean>
+> = ExtractSuccessResponse<T>['result'];
