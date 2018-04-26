@@ -9,6 +9,11 @@ import {
   RpcMethodNames,
 } from './primitives';
 
+export type NetVersion<EthNetOnly extends boolean = true> = IJsonRPC<
+  RpcMethodNames.NET_VERSION,
+  EthNetOnly extends true ? '1' | '2' | '3' | '4' | '42' : number
+>;
+
 export type NetListening = IJsonRPC<RpcMethodNames.NET_LISTENING, boolean>;
 
 export type NetPeerCount = IJsonRPC<RpcMethodNames.NET_PEER_COUNT, QUANTITY>;
