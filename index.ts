@@ -11,14 +11,15 @@ export * from './primitives';
 export * from './shh';
 export * from './web3';
 
-import { EthCoreType } from './core';
 import { EthCompilerType } from './compilers';
+import { EthCoreType } from './core';
 import { EthDBTypes } from './db';
 import { EthFilterType } from './filters';
 import { EthGetBlockByType } from './get-block-by';
 import { EthGetCountType } from './get-count';
 import { EthGetTransactionType } from './get-transaction';
 import { EthMiningType } from './mining';
+
 export type EthType =
   | EthCoreType
   | EthCompilerType
