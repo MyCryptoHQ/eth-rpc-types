@@ -71,3 +71,11 @@ export type EthGetUncleByBlockNumberAndIndex<
           [Exclude<ENUM_DEFAULT_BLOCK, ENUM_DEFAULT_BLOCK.PENDING>, QUANTITY]
         >
       : never;
+
+export type EthGetBlockByType =
+  | EthGetBlockByHash
+  | EthGetBlockByNumber
+  | EthGetTransactionByBlockHashAndIndex
+  | EthGetTransactionByBlockNumberAndIndex
+  | EthGetUncleByBlockHashAndIndex
+  | EthGetUncleByBlockNumberAndIndex;

@@ -53,3 +53,15 @@ export type ShhGetMessages<NoReceiver extends boolean = boolean> = IJsonRPC<
   IShhMessage<NoReceiver>,
   [QUANTITY]
 >;
+
+export type ShhType =
+  | ShhPost
+  | ShhVersion
+  | ShhNewIdentity
+  | ShhHasIdentity
+  | ShhNewGroup
+  | ShhAddToGroup
+  | ShhNewFilter
+  | ShhUninstallFilter
+  | ShhGetFilterChanges
+  | ShhGetMessages;

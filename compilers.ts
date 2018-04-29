@@ -24,3 +24,9 @@ export type EthCompileSerpent = IJsonRPC<
   DATA,
   [string]
 >;
+
+export type EthCompilerType =
+  | EthGetCompilers
+  | EthCompileLll
+  | EthCompileSolidity
+  | EthCompileSerpent;

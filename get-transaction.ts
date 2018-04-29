@@ -17,3 +17,7 @@ export type EthGetTransactionReceipt<
   ITransactionReceiptObject<ContractCreation>,
   [DATA_32B]
 >;
+
+export type EthGetTransactionType =
+  | EthGetTransactionByHash
+  | EthGetTransactionReceipt;

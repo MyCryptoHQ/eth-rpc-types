@@ -36,3 +36,10 @@ export type EthGetUncleCountByBlockNumber = IJsonRPC<
   QUANTITY,
   [DefaultBlock]
 >;
+
+export type EthGetCountType =
+  | EthGetTransactionCount
+  | EthGetBlockTransactionCountByHash
+  | EthGetBlockTransactionCountByNumber
+  | EthGetUncleCountByBlockHash
+  | EthGetUncleCountByBlockNumber;

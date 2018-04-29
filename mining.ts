@@ -16,3 +16,5 @@ export type EthSubmitHashrate = IJsonRPC<
   boolean,
   [DATA_32B, DATA_32B]
 >;
+
+export type EthMiningType = EthGetWork | EthSubmitWork | EthSubmitHashrate;

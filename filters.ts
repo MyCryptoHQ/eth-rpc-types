@@ -23,20 +23,20 @@ export type EthUninstallFilter = IJsonRPC<
   [QUANTITY]
 >;
 
-enum FilterType {
+export enum FilterTypes {
   eth_newBlockFilter,
   eth_newPendingTransactionFilter,
   eth_newFilter,
 }
 
 export type EthGetFilterChanges<
-  T extends FilterType,
+  T extends FilterTypes,
   Pending extends boolean = boolean
-> = T extends FilterType.eth_newBlockFilter
+> = T extends FilterTypes.eth_newBlockFilter
   ? IJsonRPC<RpcMethodNames.ETH_GET_FILTER_CHANGES, DATA_32B[], [QUANTITY]>
-  : T extends FilterType.eth_newPendingTransactionFilter
+  : T extends FilterTypes.eth_newPendingTransactionFilter
     ? IJsonRPC<RpcMethodNames.ETH_GET_FILTER_CHANGES, DATA_32B[], [QUANTITY]>
-    : T extends FilterType.eth_newFilter
+    : T extends FilterTypes.eth_newFilter
       ? IJsonRPC<
           RpcMethodNames.ETH_GET_FILTER_CHANGES,
           ILogObject<Pending>[],
@@ -45,13 +45,13 @@ export type EthGetFilterChanges<
       : never;
 
 export type EthGetFilterLogs<
-  T extends FilterType,
+  T extends FilterTypes,
   Pending extends boolean = boolean
-> = T extends FilterType.eth_newBlockFilter
+> = T extends FilterTypes.eth_newBlockFilter
   ? IJsonRPC<RpcMethodNames.ETH_GET_FILTER_LOGS, DATA_32B[], [QUANTITY]>
-  : T extends FilterType.eth_newPendingTransactionFilter
+  : T extends FilterTypes.eth_newPendingTransactionFilter
     ? IJsonRPC<RpcMethodNames.ETH_GET_FILTER_LOGS, DATA_32B[], [QUANTITY]>
-    : T extends FilterType.eth_newFilter
+    : T extends FilterTypes.eth_newFilter
       ? IJsonRPC<
           RpcMethodNames.ETH_GET_FILTER_LOGS,
           ILogObject<Pending>[],
@@ -64,3 +64,15 @@ export type EthGetLogs<Pending extends boolean = boolean> = IJsonRPC<
   ILogObject<Pending>[],
   [IFilterOptions]
 >;
+
+export type EthFilterType<
+  T extends FilterTypes = FilterTypes,
+  Pending extends boolean = boolean
+> =
+  | EthNewFilter
+  | EthNewBlockFilter
+  | EthNewPendingTransactionFilter
+  | EthUninstallFilter
+  | EthGetFilterChanges<T, Pending>
+  | EthGetFilterLogs<T, Pending>
+  | EthGetLogs;

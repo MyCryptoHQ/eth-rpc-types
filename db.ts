@@ -23,3 +23,5 @@ export type DbGetHex = IJsonRPC<
   DATA,
   [string, string]
 >;
+
+export type EthDBTypes = DbPutString | DbGetString | DbPutHex | DbGetHex;

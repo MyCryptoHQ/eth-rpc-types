@@ -87,3 +87,24 @@ export type EthEstimateGas = IJsonRPC<
   QUANTITY,
   [Partial<ITransactionCallObject>]
 >;
+
+export type EthCoreType =
+  | NetVersion
+  | NetListening
+  | NetPeerCount
+  | EthProtocolVersion
+  | EthSyncing
+  | EthCoinbase
+  | EthMining
+  | EthHashrate
+  | EthGasPrice
+  | EthAccounts
+  | EthBlockNumber
+  | EthGetBalance
+  | EthGetStorageAt
+  | EthGetCode
+  | EthSign
+  | EthSendTransaction
+  | EthSendRawTransaction
+  | EthCall
+  | EthEstimateGas;
