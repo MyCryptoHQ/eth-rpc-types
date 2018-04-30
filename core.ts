@@ -110,6 +110,7 @@ export type EthCoreType =
   | EthGetStorageAt
   | EthGetCode
   | EthSign
+  | EthPersonalSIgn
   | EthSendTransaction
   | EthSendRawTransaction
   | EthCall
