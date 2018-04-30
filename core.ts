@@ -64,6 +64,12 @@ export type EthGetCode = IJsonRPC<
 
 export type EthSign = IJsonRPC<RpcMethodNames.ETH_SIGN, DATA, [DATA_20B, DATA]>;
 
+export type EthPersonalSIgn = IJsonRPC<
+  RpcMethodNames.ETH_PERSONAL_SIGN,
+  DATA,
+  [DATA_20B, DATA]
+>;
+
 export type EthSendTransaction = IJsonRPC<
   RpcMethodNames.ETH_SEND_TRANSACTION,
   DATA_32B,

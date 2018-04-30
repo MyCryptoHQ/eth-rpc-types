@@ -20,6 +20,7 @@ export enum RpcMethodNames {
   ETH_GET_UNCLE_COUNT_BY_BLOCK_HASH = 'eth_getUncleCountByBlockHash',
   ETH_GET_UNCLE_COUNT_BY_BLOCK_NUMBER = 'eth_getUncleCountByBlockNumber',
   ETH_GET_CODE = 'eth_getCode',
+  ETH_PERSONAL_SIGN = 'personal_sign',
   ETH_SIGN = 'eth_sign',
   ETH_SEND_TRANSACTION = 'eth_sendTransaction',
   ETH_SEND_RAW_TRANSACTION = 'eth_sendRawTransaction',
